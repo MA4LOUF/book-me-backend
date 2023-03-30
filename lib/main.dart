@@ -16,10 +16,5 @@ class BookMe extends StatelessWidget {
       onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: SplashPage.routeName
   );
-      
   }
 }
-
-
-
-
