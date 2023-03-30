@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
-import '../components/SquareTile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 //Login Part
@@ -208,8 +207,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ])
-      
-          
+
+
         ))]));
-    
+
 }}
