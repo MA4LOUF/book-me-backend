@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
 import '../components/SquareTile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //Login Part
 class LoginScreen extends StatefulWidget {
@@ -162,12 +163,16 @@ class _LoginScreenState extends State<LoginScreen> {
               
               onPressed: ()
               {
-                Navigator.pushNamed(context, '/homepage'); 
                 setState(() {
                   registeredUsername = _uController.text;
                   finalPass = _pController.text;
                 });
-              }, 
+                FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: registeredUsername,
+                    password: finalPass).then((value) {
+                      Navigator.pushNamed(context, '/homepage');}).onError((error, stackTrace){
+                        print("Error ${error.toString()}");
+                      });},
               child: const Text("Continue", style: TextStyle(color: Colors.white),)
             ),
           ),
