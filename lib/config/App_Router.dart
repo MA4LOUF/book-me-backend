@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:projects/Layouts/ForgotPass_Page.dart';
+import '/Layouts/Login_Page.dart';
+import '/Layouts/Register_Page.dart';
+import '/Layouts/Splash_Page.dart';
+import '/Layouts/Welcome_Page.dart';
+import '/Layouts/Home_Page.dart';
+import 'package:projects/Layouts/ForPass2_Page.dart';
+
+class AppRouter {
+  static Route onGenerateRoute(RouteSettings settings){
+    switch (settings.name) {
+      case '/':
+        return WelcomePage.route();
+      case SplashPage.routeName: 
+        return SplashPage.route();      
+      case HomePage.routeName: 
+        return HomePage.route(); 
+      case LoginPage.routeName:
+        return LoginPage.route();
+      case RegisterPage.routeName:
+        return RegisterPage.route();
+      case ForgotPassPage.routeName:
+        return ForgotPassPage.route();
+      case ForPass2Page.routeName:
+        return ForPass2Page.route();
+      default:
+        return _errorRoute();
+    }
+  }
+
+  static Route _errorRoute(){
+    return MaterialPageRoute(
+      builder: (_) => Scaffold(appBar: AppBar(title: const Text('error')),), 
+      settings: const RouteSettings(name: '/error'));
+  }
+  }
+
