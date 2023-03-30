@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
 import '../components/SquareTile.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 //Login Part
 class RegScreen extends StatefulWidget {
@@ -17,9 +16,6 @@ class RegScreen extends StatefulWidget {
 class _RegScreenState extends State<RegScreen> {
   bool _isChecked = false;
   bool _isVisibile = true;
-  final _uController = TextEditingController();
-  final _eController = TextEditingController();
-  final _pController = TextEditingController();
 
   @override
   Widget build(BuildContext Context) {
@@ -28,7 +24,7 @@ class _RegScreenState extends State<RegScreen> {
        body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 100), 
+          const SizedBox(height: 170), 
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Column(
@@ -66,7 +62,6 @@ class _RegScreenState extends State<RegScreen> {
               child: SizedBox(
                 height: 40, 
                 child: TextFormField(
-                  controller: _eController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                   border: InputBorder.none,
@@ -92,7 +87,6 @@ class _RegScreenState extends State<RegScreen> {
               child: SizedBox(
                 height: 40, 
                 child: TextFormField(
-                  controller: _uController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                   border: InputBorder.none,
@@ -118,9 +112,8 @@ class _RegScreenState extends State<RegScreen> {
               child: SizedBox(
                 height: 40, 
                 child: TextFormField(
-                  controller: _pController,
-                  obscureText: _isVisibile, // To hide password characters.
-                  decoration: InputDecoration(
+            obscureText: _isVisibile, // To hide password characters.
+            decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
@@ -151,14 +144,10 @@ class _RegScreenState extends State<RegScreen> {
                 minimumSize: const Size.fromHeight(45),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               ),
-
-              onPressed: (){ FirebaseAuth.instance.createUserWithEmailAndPassword(
-                  email: _eController.text, password: _pController.text).then((value){
-                  Navigator.pushNamed(context, '/homepage');
-              }).onError((error, stackTrace){
-                print('Error ${error.toString()}');
-              });
-                },
+              
+              onPressed: (){
+                
+                Navigator.pushNamed(context, '/homepage');}, 
               child: const Text("Register", style: TextStyle(color: Colors.white),)
             ),
           ),
@@ -167,13 +156,13 @@ class _RegScreenState extends State<RegScreen> {
           Row(children: const [
             SizedBox(width: 40,),
             Expanded(
-              child: Divider(thickness: 1, color: Colors.white)
+              child: Divider(thickness: 0.2, color: Colors.white)
             ), 
             Padding(padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Text("Or", style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),)
             ),
             Expanded(
-              child: Divider(thickness: 1,color: Colors.white)
+              child: Divider(thickness: 0.2,color: Colors.white)
             ),
             SizedBox(width: 40,),
           ],
@@ -188,7 +177,7 @@ class _RegScreenState extends State<RegScreen> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               ),
               
-              onPressed: (){Navigator.pushNamed(context, '/login');},
+              onPressed: (){Navigator.pushNamed(context, '/login');}, 
               child: const Text("Log in", style: TextStyle(color: Colors.black),)
             ),
           ),

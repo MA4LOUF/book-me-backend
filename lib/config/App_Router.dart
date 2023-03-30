@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:projects/Layouts/ForgotPass_Page.dart';
+import '/Layouts/ForgotPass_Page.dart';
 import '/Layouts/Login_Page.dart';
 import '/Layouts/Register_Page.dart';
 import '/Layouts/Splash_Page.dart';
 import '/Layouts/Welcome_Page.dart';
 import '/Layouts/Home_Page.dart';
-import 'package:projects/Layouts/ForPass2_Page.dart';
+import '/Layouts/ForPass2_Page.dart';
+import '/Layouts/SideBarPage.dart';
+import 'package:projects/Layouts/Profile_Page.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings){
@@ -24,6 +26,8 @@ class AppRouter {
         return ForgotPassPage.route();
       case ForPass2Page.routeName:
         return ForPass2Page.route();
+      case ProfilePage.routeName: 
+        return ProfilePage.route();
       default:
         return _errorRoute();
     }

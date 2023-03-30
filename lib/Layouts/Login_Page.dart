@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Layouts/Register_Page.dart';
 import '/Screens/LoginScreen.dart';
-import '/Screens/RightWidget.dart';
 class LoginPage extends StatelessWidget {
   static const String routeName = '/login';
 

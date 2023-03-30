@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
+import '../Screens/SideBarScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +15,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Book Me", style: Theme.of(context).textTheme.headline2?.copyWith(color: Colors.white)),backgroundColor: theme().primaryColorDark, toolbarHeight: 100,),
-    );
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: theme().primaryColorDark,
+        
+      ),
+      drawer: const SideBarScreen(), 
+      body: Container(color: theme().primaryColorDark,)
+      );
+    
   }
 }

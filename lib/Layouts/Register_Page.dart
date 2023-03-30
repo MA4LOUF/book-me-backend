@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import '/Screens/HomeScreen.dart';
-import '/Screens/Welcome.dart';
 import '/Screens/Register.dart';
-import '/Screens/RightWidget.dart';
-import 'Login_Page.dart';
-import '/Screens/LeftWidget.dart';
 
 
 class RegisterPage extends StatelessWidget {
