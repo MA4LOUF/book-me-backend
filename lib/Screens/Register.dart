@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
@@ -16,6 +17,9 @@ class RegScreen extends StatefulWidget {
 class _RegScreenState extends State<RegScreen> {
   bool _isChecked = false;
   bool _isVisibile = true;
+  final _eController = TextEditingController();
+  final _uController = TextEditingController();
+  final _pController = TextEditingController();
 
   @override
   Widget build(BuildContext Context) {
@@ -62,6 +66,7 @@ class _RegScreenState extends State<RegScreen> {
               child: SizedBox(
                 height: 40, 
                 child: TextFormField(
+                  controller: _eController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                   border: InputBorder.none,
@@ -87,6 +92,7 @@ class _RegScreenState extends State<RegScreen> {
               child: SizedBox(
                 height: 40, 
                 child: TextFormField(
+                  controller: _uController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                   border: InputBorder.none,
@@ -112,6 +118,7 @@ class _RegScreenState extends State<RegScreen> {
               child: SizedBox(
                 height: 40, 
                 child: TextFormField(
+                  controller: _pController,
             obscureText: _isVisibile, // To hide password characters.
             decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
@@ -146,8 +153,12 @@ class _RegScreenState extends State<RegScreen> {
               ),
               
               onPressed: (){
-                
-                Navigator.pushNamed(context, '/homepage');}, 
+                FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    email: _eController.text, password: _pController.text).then((value) {
+                      Navigator.pushNamed(context, '/homepage');}).onError((error, stackTrace){
+                        print("Error: ${error.toString()}");
+                });
+                },
               child: const Text("Register", style: TextStyle(color: Colors.white),)
             ),
           ),
