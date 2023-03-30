@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
@@ -49,7 +50,7 @@ Widget menuList (BuildContext context) => Container(
                   leading: const Icon(Icons.exit_to_app, color: Colors.black),
                   title: const Text("Log out", style: TextStyle(color: Colors.black, fontSize: 15)),
                   onTap: (){
-                    Navigator.pushNamed(context, '/');
+                    FirebaseAuth.instance.signOut().then((value) => Navigator.pushNamed(context, '/'));
                   },
                 ),
                     
